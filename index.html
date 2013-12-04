@@ -29,7 +29,7 @@
 	<div data-role="header">
 		<h1>Página dos</h1>
 	</div>
-	<div data-role="content">	
+	<div data-role="content" id="contenidoDispositivo">	
 		Contenido		
 	</div>
 	<div data-role="footer">
@@ -62,4 +62,23 @@
 </div>
 
 </body>
+<script type="text/javascript" charset="utf-8">
+
+// Wait for PhoneGap to load
+//
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// PhoneGap is ready
+//
+function onDeviceReady() {
+    var element = document.getElementById('contenidoDispositivo');
+
+    element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
+                        'Device PhoneGap: ' + device.phonegap + '<br />' + 
+                        'Device Platform: ' + device.platform + '<br />' + 
+                        'Device UUID: '     + device.uuid     + '<br />' + 
+                        'Device Version: '  + device.version  + '<br />';
+}
+
+</script>
 </html>
