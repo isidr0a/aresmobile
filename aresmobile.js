@@ -17,7 +17,7 @@ var aresMobile	={
 	****************************/
 	initApp:function (){
 		$('#Search-Input-Music').bind('keypress',function (e){
-			alert(e.altKey);
+			alert(e.keyCode);
 		})
 	}
 }
