@@ -33,9 +33,10 @@ var aresMobile	={
 					$('.songs li',html).each(function(index, element) {
                         var song=$(aresMobile.templates.listDown);
 						$('a',song).data('url',$('a',element).attr('href'));
-						$('a',song).html($(element).text());
+						$('a',song).html($(element).text().replace('[ Descargar ]',''));
 						song.appendTo('#SearchMusicDownResult');
                     });
+					$('#SearchMusicDownResult').listview('refresh');
 				}
 			});
 		});
