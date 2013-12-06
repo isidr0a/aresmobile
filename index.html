@@ -14,8 +14,8 @@
 
 <div data-role="page" data-theme="a" id="page">
     <div data-role="panel" id="SearchMusicDownActions" data-position="right" data-display="reveal">
-        <a href="#" data-role="button">Reproducir</a>
-        <a href="#" data-theme="b" data-role="button">Descargar</a>
+        <a href="#" data-role="button" data-action="play">Reproducir</a>
+        <a href="#" data-theme="b" data-role="button" data-action="down">Descargar</a>
     </div><!-- /panel -->
 	<div data-role="header">
 		<h1>Búsqueda</h1>
@@ -29,6 +29,7 @@
             </div>
             <div>
                 <ul data-role="listview" id="SearchMusicDownResult">
+	                <li><a href="#SearchMusicDownActions">test</a></li>
                 </ul>
             </div>
         </div>
@@ -36,7 +37,7 @@
     <div data-role="footer" class="nav-glyphish-example" data-position="fixed">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
             <ul>
-                <li><a href="#" id="search" class="ui-btn-active ui-state-persist" data-icon="custom">Búsqueda</a></li>
+                <li><a href="#" class="ui-btn-active ui-state-persist btn-menuSearch" data-icon="custom">Búsqueda</a></li>
                 <li><a href="#" id="biblio" data-icon="custom">Biblioteca</a></li>
                 <li><a href="#" id="repro" data-icon="custom">Reproductor</a></li>
                 <li><a href="#" id="download" data-icon="custom">Descargas</a></li>
