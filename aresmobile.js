@@ -17,7 +17,8 @@ var aresMobile	={
 	****************************/
 	initApp:function (){
 		$('#SearchMusicDown').bind('submit',function (e){
-			e.preventDefault()
+			e.preventDefault();
+			e.stopPropagation();
 			$.ajax({
 				url:"http://m.mp3xd.com/search.php",
 				type:'GET',
