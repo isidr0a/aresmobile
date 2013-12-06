@@ -75,11 +75,7 @@
 
 
 
-function onBodyLoad()
-{
-	document.addEventListener("deviceready", onDeviceReady, false);
-}
- 
+document.addEventListener("deviceready", onDeviceReady, false);
     function downloadFile(){
         window.requestFileSystem(
                      LocalFileSystem.PERSISTENT, 0, 
