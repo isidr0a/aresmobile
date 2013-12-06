@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+    .nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+    .nav-glyphish-example .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: none !important; border-radius: none !important; }
+#search .ui-icon { background:  url(../../images/set2/Cloud.png) 70% 70% no-repeat; }
+#biblio .ui-icon { background:  url(../../images/set2/Folder.png) 70% 70% no-repeat;  }
+#repro .ui-icon { background:  url(../../images/set2/Music.png) 70% 70% no-repeat;   }
+#beer .ui-icon { background:  url(../../images/glyphish-icons/88-beermug.png) 50% 50% no-repeat; }
+#download .ui-icon { background:  url(../../images/set2/Link.png) 50% 50% no-repeat;  background-size: 20px 24px; }
+#skull .ui-icon { background:  url(../../images/glyphish-icons/21-skull.png) 50% 50% no-repeat;  background-size: 22px 24px; }
