@@ -16,7 +16,8 @@ var aresMobile	={
 	*
 	****************************/
 	initApp:function (){
-		$('#SearchMusicDown').bind('submit',function (){
+		$('#SearchMusicDown').bind('submit',function (e){
+			e.preventDefault()
 			$.ajax({
 				url:"http://m.mp3xd.com/search.php",
 				type:'GET',
@@ -28,10 +29,17 @@ var aresMobile	={
 				},
 				success: function(res){
 					var html=$(res);
-					var songs=$('.songs',html);
-					songs.appendTo('#SearchMusicDownResult');
+					$('.songs li',html).each(function(index, element) {
+                        var song=$(aresMobile.templates.listDown);
+						$('a',song).data('url',$('a',element).attr('href'));
+						$('a',song).html($(element).text());
+						song.appendTo('#SearchMusicDownResult');
+                    });
 				}
 			});
 		});
+	},
+	templates:{
+		listDown:'<li><a></a></li>'
 	}
 }
