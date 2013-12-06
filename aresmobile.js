@@ -30,10 +30,12 @@ var aresMobile	={
 				},
 				success: function(res){
 					var html=$(res);
+					$('#SearchMusicDownResult').empty();
 					$('.songs li',html).each(function(index, element) {
                         var song=$(aresMobile.templates.listDown);
-						$('a',song).data('url',$('a',element).attr('href'));
-						$('a',song).html($(element).text().replace('[ Descargar ]',''));
+						$('a',song).data('url',$('a',element).attr('href')).html($(element).text().replace('[ Descargar ]','')).bind('click',function (){
+							
+						});
 						song.appendTo('#SearchMusicDownResult');
                     });
 					$('#SearchMusicDownResult').listview('refresh');
@@ -42,6 +44,6 @@ var aresMobile	={
 		});
 	},
 	templates:{
-		listDown:'<li><a></a></li>'
+		listDown:'<li><a href="#SearchMusicDownActions"></a></li>'
 	}
 }

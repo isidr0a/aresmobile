@@ -18,17 +18,25 @@
 	</div>
 	<div data-role="content">
         <div>
-	        <form action="#" id="SearchMusicDown">
-				<input type="search" placeholder="Buscar..." name="search" id="SearchMusicDownInput" value="" />
-            </form>
-            <ul data-role="listview" id="SearchMusicDownResult">
-            </ul>
+        	<div>
+                <form action="#" id="SearchMusicDown">
+                    <input type="search" placeholder="Buscar..." name="search" id="SearchMusicDownInput" value="" />
+                </form>
+            </div>
+            <div>
+                <ul data-role="listview" id="SearchMusicDownResult">
+                </ul>
+            </div>
+            <div data-role="panel" id="SearchMusicDownActions" data-position="right" data-display="reveal">
+            	<a href="#" data-role="button">Reproducir</a>
+            	<a href="#" data-theme="b" data-role="button">Descargar</a>
+            </div><!-- /panel -->
         </div>
 	</div>
     <div data-role="footer" class="nav-glyphish-example" data-position="fixed">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
             <ul>
-                <li><a href="#" id="search" data-icon="custom">Búsqueda</a></li>
+                <li><a href="#" id="search" class="ui-btn-active ui-state-persist" data-icon="custom">Búsqueda</a></li>
                 <li><a href="#" id="biblio" data-icon="custom">Biblioteca</a></li>
                 <li><a href="#" id="repro" data-icon="custom">Reproductor</a></li>
                 <li><a href="#" id="download" data-icon="custom">Descargas</a></li>
