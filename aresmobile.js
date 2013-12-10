@@ -81,7 +81,7 @@ var AM	={
 	*
 	****************************/
 	initApp:function (){
-		AM.install();
+		//AM.install();
 		
 		//inizializando buscador
 		$('#SearchMusicDown').bind('submit',AM.searchMusic);
@@ -104,6 +104,7 @@ var AM	={
 	*************************/
 	install:function (){
 		console.log('init install');
+		
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
 			var entry=fileSystem.root;
 			console.log(fileSystem.name);
