@@ -83,7 +83,7 @@ var AM	={
 	*
 	****************************/
 	initApp:function (){
-		//AM.install();
+		AM.install();
 		
 		//inizializando buscador
 		$('#SearchMusicDown').bind('submit',AM.searchMusic);
