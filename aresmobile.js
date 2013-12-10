@@ -9,7 +9,6 @@ var AM	={
 	searchMusic:function (e){
 			e.preventDefault();
 			e.stopPropagation();
-			console.log($("#SearchMusicDownInput").val().replace(' ','+'));
 			$.ajax({
 				url:"http://m.mp3xd.com/search.php",
 				type:'GET',
@@ -21,6 +20,8 @@ var AM	={
 				},
 				success: function(res){
 					var html=$(res);
+					console.log(res);
+					console.log(html);
 					$('#SearchMusicDownResult').empty();
 					$('.songs li',html).each(function(index, element) {
 						console.log($(element).text());
