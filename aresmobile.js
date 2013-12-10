@@ -38,10 +38,7 @@ var aresMobile	={
 			
 		},
 		down:function (){
-			  window.requestFileSystem(
-                     LocalFileSystem.PERSISTENT, 0, 
-                     function onFileSystemSuccess(fileSystem) {
-                     fileSystem.root.getFile(
+                     aresMobile.glovar.folderMaster.root.getFile(
                                  "dummy.html", {create: true, exclusive: false}, 
                                  function gotFileEntry(fileEntry){
                                  var sPath = fileEntry.fullPath.replace("dummy.html","");
@@ -52,7 +49,7 @@ var aresMobile	={
                                            "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
                                            sPath + "theFile.pdf",
                                            function(theFile) {
-                                           console.log("download complete: " + theFile.toURI());
+                                           alert("download complete: " + theFile.toURI());
                                            downSuccess(theFile.toURI());
                                            },
                                            function(error) {
@@ -63,8 +60,6 @@ var aresMobile	={
                                            );
                                  }, 
                                  downFail);
-                     }, 
-                     downFail);
 		},
 		downSuccess:function (){
 			
@@ -88,6 +83,7 @@ var aresMobile	={
 	initApp:function (){
 		//inizializando buscador
 		$('#SearchMusicDown').bind('submit',aresMobile.searchMusic);
+		$('a[data-action=down]').bind('click',aresMobile.actionSearch.down);
 	},
 	/***********************
 	*
