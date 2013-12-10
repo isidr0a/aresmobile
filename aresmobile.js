@@ -89,7 +89,32 @@ var aresMobile	={
 		//inizializando buscador
 		$('#SearchMusicDown').bind('submit',aresMobile.searchMusic);
 	},
+	/***********************
+	*
+		templates
+	*
+	*************************/
 	templates:{
 		listDown:'<li><a href="#SearchMusicDownActions"></a></li>'
+	},
+	/***********************
+	*
+		install app
+	*
+	*************************/
+	install:function (){
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
+			var entry=fileSystem.root; 
+			entry.getDirectory("aresMobile", {create: true, exclusive: false}, function (dir) {
+					aresMobile.glovar.folderMaster=dir;
+				},
+				function (error) {
+					console.log("Error creating directory "+error.code)
+				}
+			)
+		} , null); 
+	},
+	glovar:{
+		
 	}
 }
