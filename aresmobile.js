@@ -23,6 +23,7 @@ var AM	={
 					var html=$(res);
 					$('#SearchMusicDownResult').empty();
 					$('.songs li',html).each(function(index, element) {
+						console.log($(element).text());
                         var song=$(AM.templates.listDown);
 						$('a',song).data('url',$('a',element).attr('href')).html($(element).text().replace('[ Descargar ]','')).bind('click',function (){
 							$('#SearchMusicDownActions a').data('resources',$(this).data('url'));
