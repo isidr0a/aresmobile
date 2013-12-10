@@ -9,7 +9,7 @@ var AM	={
 	searchMusic:function (e){
 			e.preventDefault();
 			e.stopPropagation();
-			alert($("#SearchMusicDownInput").val().replace(' ','+'));
+			console.log($("#SearchMusicDownInput").val().replace(' ','+'));
 			$.ajax({
 				url:"http://m.mp3xd.com/search.php",
 				type:'GET',
@@ -49,7 +49,7 @@ var AM	={
                                            "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
                                            sPath + "theFile.pdf",
                                            function(theFile) {
-                                           alert("download complete: " + theFile.toURI());
+                                           console.log("download complete: " + theFile.toURI());
                                            downSuccess(theFile.toURI());
                                            },
                                            function(error) {
@@ -103,15 +103,16 @@ var AM	={
 	*
 	*************************/
 	install:function (){
+		console.log('init install');
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
 			var entry=fileSystem.root;
-			alert(fileSystem.name);
+			console.log(fileSystem.name);
 			entry.getDirectory("AM", {create: true, exclusive: false}, function (dir) {
 					AM.glovar.folderMaster=dir;
-					alert('creating directory'+AM.glovar.folderMaster.name);
+					console.log('creating directory'+AM.glovar.folderMaster.name);
 				},
 				function (error) {
-					alert("Error creating directory "+error.code);
+					console.log("Error creating directory "+error.code);
 				}
 			)
 		} , null); 
