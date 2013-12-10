@@ -1,6 +1,6 @@
 // JavaScript Document
 
-var aresMobile	={
+var AM	={
 	/***********************
 	*
 		FUNCION DE BUSQUEDA
@@ -23,7 +23,7 @@ var aresMobile	={
 					var html=$(res);
 					$('#SearchMusicDownResult').empty();
 					$('.songs li',html).each(function(index, element) {
-                        var song=$(aresMobile.templates.listDown);
+                        var song=$(AM.templates.listDown);
 						$('a',song).data('url',$('a',element).attr('href')).html($(element).text().replace('[ Descargar ]','')).bind('click',function (){
 							$('#SearchMusicDownActions a').data('resources',$(this).data('url'));
 						});
@@ -38,7 +38,7 @@ var aresMobile	={
 			
 		},
 		down:function (){
-                     aresMobile.glovar.folderMaster.root.getFile(
+                     AM.glovar.folderMaster.root.getFile(
                                  "dummy.html", {create: true, exclusive: false}, 
                                  function gotFileEntry(fileEntry){
                                  var sPath = fileEntry.fullPath.replace("dummy.html","");
@@ -81,9 +81,13 @@ var aresMobile	={
 	*
 	****************************/
 	initApp:function (){
+		AM.install();
+		
 		//inizializando buscador
-		$('#SearchMusicDown').bind('submit',aresMobile.searchMusic);
-		$('a[data-action=down]').bind('click',aresMobile.actionSearch.down);
+		$('#SearchMusicDown').bind('submit',AM.searchMusic);
+		$('a[data-action=down]').bind('click',AM.actionSearch.down);
+		
+		
 	},
 	/***********************
 	*
@@ -101,8 +105,8 @@ var aresMobile	={
 	install:function (){
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
 			var entry=fileSystem.root; 
-			entry.getDirectory("aresMobile", {create: true, exclusive: false}, function (dir) {
-					aresMobile.glovar.folderMaster=dir;
+			entry.getDirectory("AM", {create: true, exclusive: false}, function (dir) {
+					AM.glovar.folderMaster=dir;
 				},
 				function (error) {
 					console.log("Error creating directory "+error.code)
