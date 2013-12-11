@@ -158,7 +158,14 @@ var AM	={
 			)
 		} , null); 
 		 // Create Media object from src
-            my_media = new Media('test.mp3', function (){}, function (){});
+            my_media = new Media('test.mp3', 
+				function() {
+					alert("playAudio():Audio Success");
+				},
+					function(err) {
+						alert(err);
+				}
+				);
 
             // Play audio
             my_media.play();
