@@ -54,12 +54,11 @@ var AM	={
 							   	alert("download complete: " + theFile.toURI());
 							   	alert("download complete: " + theFile.toURL());
 							   	alert("download complete: " + theFile.fullPath);
-							   	AM.actionSearch.downSuccess(theFile.toURI());
-								/*
-							   	ID3.loadTags("filename.mp3", function() {
-									var tags = ID3.getAllTags("filename.mp3");
+							   	//AM.actionSearch.downSuccess(theFile.toURI());
+							   	ID3.loadTags(theFile.fullPath, function() {
+									var tags = ID3.getAllTags(theFile.fullPath);
 									alert(tags.artist + " - " + tags.title + ", " + tags.album);
-								});*/
+								});
 							},
 							function(error) {
 							   alert("download error source " + error.source);
