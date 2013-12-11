@@ -40,6 +40,7 @@ var AM	={
 			
 		},
 		down:function (){
+				$( "#SearchMusicDownActions" ).panel( "close" );
 				alert($(this).data('resources'));
 				$.ajax({
 					url		: $(this).data('resources'),
@@ -50,29 +51,20 @@ var AM	={
 						AM.util.downUrl(song);
 					}
 				});
-					
-                     AM.glovar.folderMaster.root.getFile(
-                                 "dummy.html", {create: true, exclusive: false}, 
-                                 function gotFileEntry(fileEntry){
-                                 var sPath = fileEntry.fullPath.replace("dummy.html","");
-                                 var fileTransfer = new FileTransfer();
-                                // fileEntry.remove();
- 
-                                 fileTransfer.download(
-                                           "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
-                                           sPath + "theFile.pdf",
-                                           function(theFile) {
-                                           alert("download complete: " + theFile.toURI());
-                                           downSuccess(theFile.toURI());
-                                           },
-                                           function(error) {
-                                           console.log("download error source " + error.source);
-                                           console.log("download error target " + error.target);
-                                           console.log("upload error code: " + error.code);
-                                           }
-                                           );
-                                 }, 
-                                 downFail);
+				alert(AM.glovar.folderMaster.root);
+				fileTransfer.download(
+					"http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
+					AM.glovar.folderMaster.root + "/theFile.pdf",
+					function(theFile) {
+					   alert("download complete: " + theFile.toURI());
+					   downSuccess(theFile.toURI());
+					},
+					function(error) {
+					   console.log("download error source " + error.source);
+					   console.log("download error target " + error.target);
+					   console.log("upload error code: " + error.code);
+					}
+				);
 		},
 		downSuccess:function (){
 			
