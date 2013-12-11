@@ -47,6 +47,7 @@ var AM	={
 					success	: function (res){
 						var html=$(res);
 						var uriSong=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
+						var fileTransfer = new FileTransfer();
 						fileTransfer.download(
 							"http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
 							AM.glovar.folderMaster.fullPath + "/"+song+".mp3",
