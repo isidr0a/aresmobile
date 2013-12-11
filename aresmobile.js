@@ -94,6 +94,9 @@ var AM	={
 					alert(entries[i].name);
 					
 					alert(entries[i].toURL());
+					var audioElement = document.createElement('audio');
+					audioElement.setAttribute('src', entries[i].toURL());
+					audioElement.play();
 					$.get(entries[i].toURL(),function (res){
 						alert('in get funtion ');
 						ID3.loadTags(res, function() {
