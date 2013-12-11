@@ -90,21 +90,14 @@ var AM	={
 		updateAll:function (){
 			function success(entries) {
 				var i;
-				for (i=0; i<entries.length; i++) {
-					alert(entries[i].name);
-					
-					alert(entries[i].toURL());
-					var audioElement = document.createElement('audio');
-					audioElement.setAttribute('src', entries[i].toURL());
-					audioElement.play();
-					$.get(entries[i].toURL(),function (res){
-						alert('in get funtion ');
-						ID3.loadTags(res, function() {
-							var tags = ID3.getAllTags(res);
-							alert(tags.artist + " - " + tags.title + ", " + tags.album);
-						});
+				var aux=[];
+				$.each(entries,function (i,e){
+					alert(e.name);
+					ID3.loadTags(e.toURL(), function() {
+						var tags = ID3.getAllTags(e.toURL());
+						alert(tags.artist + " - " + tags.title + ", " + tags.album);
 					});
-				}
+				});
 			}
 			
 			function fail(error) {
