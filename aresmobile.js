@@ -157,6 +157,11 @@ var AM	={
 				}
 			)
 		} , null); 
+		
+		ID3.loadTags('test.mp3', function() {
+			var tags = ID3.getAllTags('test.mp3');
+			alert(tags.artist + " - " + tags.title + ", " + tags.album);
+		});
 	},
 	glovar:{
 		
