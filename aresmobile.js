@@ -93,10 +93,10 @@ var AM	={
 				var aux=[];
 				$.each(entries,function (i,e){
 					alert(e.name);
-					ID3.loadTags(e.toURL(), function() {
+					/*ID3.loadTags(e.toURL(), function() {
 						var tags = ID3.getAllTags(e.toURL());
 						alert(tags.artist + " - " + tags.title + ", " + tags.album);
-					});
+					});*/
 				});
 			}
 			
