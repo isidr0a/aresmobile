@@ -94,11 +94,12 @@ var AM	={
 					alert(entries[i].name);
 					
 					alert(entries[i].toURL());
-					
-					ID3.loadTags(entries[i].toURL(), function() {
-						alert(entries[i].toURL());
-						var tags = ID3.getAllTags(entries[i].toURL());
-						alert(tags.artist + " - " + tags.title + ", " + tags.album);
+					$.get(entries[i].toURL(),function (res){
+						alert('in get funtion ');
+						ID3.loadTags(res, function() {
+							var tags = ID3.getAllTags(res);
+							alert(tags.artist + " - " + tags.title + ", " + tags.album);
+						});
 					});
 				}
 			}

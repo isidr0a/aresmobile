@@ -6,7 +6,7 @@
 #biblio .ui-icon { background:  url(../../images/set2/Folder.png) 70% 70% no-repeat;  }
 #repro .ui-icon { background:  url(../../images/set2/Music.png) 70% 70% no-repeat;   }
 #beer .ui-icon { background:  url(../../images/glyphish-icons/88-beermug.png) 50% 50% no-repeat; }
-#download .ui-icon { background:  url(../../images/set2/Link.png) 50% 50% no-repeat;  background-size: 20px 24px; }
+.btn-manuDownload .ui-icon { background:  url(../../images/set2/Link.png) 50% 50% no-repeat;  background-size: 20px 24px; }
 #skull .ui-icon { background:  url(../../images/glyphish-icons/21-skull.png) 50% 50% no-repeat;  background-size: 22px 24px; }
 
 #SearchMusicDownResult{

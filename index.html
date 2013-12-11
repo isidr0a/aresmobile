@@ -13,7 +13,7 @@
 </head> 
 <body onLoad="onBodyLoad"> 
 
-<div data-role="page" data-theme="a" id="page">
+<div data-role="page"id="pageSearch" data-theme="a" >
     <div data-role="panel" id="SearchMusicDownActions" data-position="right" data-display="reveal">
         <a href="#" data-role="button" data-action="play">Reproducir</a>
         <a href="#" data-theme="b" data-role="button" data-action="down">Descargar</a>
@@ -38,10 +38,10 @@
     <div data-role="footer" class="nav-glyphish-example" data-position="fixed">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
             <ul>
-                <li><a href="#" class="ui-btn-active ui-state-persist btn-menuSearch" data-icon="custom">Búsqueda</a></li>
+                <li><a href="#pageSearch" class="ui-btn-active ui-state-persist btn-menuSearch" data-icon="custom">Búsqueda</a></li>
                 <li><a href="#" id="biblio" data-icon="custom">Biblioteca</a></li>
                 <li><a href="#" id="repro" data-icon="custom">Reproductor</a></li>
-                <li><a href="#" id="download" data-icon="custom">Descargas</a></li>
+                <li><a href="#pageDown" id="download" class="btn-manuDownload" data-icon="custom">Descargas</a></li>
             </ul>
         </div>
     </div>
@@ -54,9 +54,16 @@
 	<div data-role="content" id="contenidoDispositivo">	
 		Contenido		
 	</div>
-	<div data-role="footer">
-		<h4>Pie de página</h4>
-	</div>
+    <div data-role="footer" class="nav-glyphish-example" data-position="fixed">
+        <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+            <ul>
+                <li><a href="#" class="ui-btn-active ui-state-persist btn-menuSearch" data-icon="custom">Búsqueda</a></li>
+                <li><a href="#" id="biblio" data-icon="custom">Biblioteca</a></li>
+                <li><a href="#" id="repro" data-icon="custom">Reproductor</a></li>
+                <li><a href="#pageDown" id="download" class="btn-manuDownload" data-icon="custom">Descargas</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <div data-role="page" id="page3">
@@ -66,21 +73,57 @@
 	<div data-role="content">	
 		Contenido		
 	</div>
-	<div data-role="footer">
-		<h4>Pie de página</h4>
-	</div>
+    <div data-role="footer" class="nav-glyphish-example" data-position="fixed">
+        <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+            <ul>
+                <li><a href="#pageSearch" class="ui-btn-active ui-state-persist btn-menuSearch" data-icon="custom">Búsqueda</a></li>
+                <li><a href="#" id="biblio" data-icon="custom">Biblioteca</a></li>
+                <li><a href="#" id="repro" data-icon="custom">Reproductor</a></li>
+                <li><a href="#pageDown" id="download" class="btn-manuDownload" data-icon="custom">Descargas</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
-<div data-role="page" id="page4">
+<div data-role="page" id="pageDown"  data-theme="a" >
 	<div data-role="header">
-		<h1>Página cuatro</h1>
+		<h1>Descargas</h1>
 	</div>
 	<div data-role="content">	
-		Contenido		
+		<ul data-role="listview" data-split-icon="gear" data-split-theme="d" data-inset="true">
+            <li><a href="#">
+                <img src="images/coverDefault.png">
+                <h2>Broken Bells</h2>
+                <p>Broken Bells</p></a>
+            </li>
+            <li><a href="#">
+                <img src="images/coverDefault.png">
+                <h2>Warning</h2>
+                <p>Hot Chip</p></a>
+            </li>
+            <li><a href="#">
+                <img src="images/coverDefault.png">
+                <h2>Wolfgang Amadeus Phoenix</h2>
+                <p>Phoenix</p></a>
+            </li>
+        </ul>
+        <div data-role="popup" id="purchase" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+            <h3>Purchase Album?</h3>
+            <p>Your download will begin immediately on your mobile device when you purchase.</p>
+            <a href="index.html" data-role="button" data-rel="back" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Buy: $10.99</a>
+            <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+        </div>		
 	</div>
-	<div data-role="footer">
-		<h4>Pie de página</h4>
-	</div>
+    <div data-role="footer" class="nav-glyphish-example" data-position="fixed">
+        <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+            <ul>
+                <li><a href="#pageSearch" class="btn-menuSearch" data-icon="custom">Búsqueda</a></li>
+                <li><a href="#" id="biblio" data-icon="custom">Biblioteca</a></li>
+                <li><a href="#" id="repro" data-icon="custom">Reproductor</a></li>
+                <li><a href="#" id="download" class="ui-btn-active ui-state-persist btn-manuDownload" data-icon="custom">Descargas</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 </body>
