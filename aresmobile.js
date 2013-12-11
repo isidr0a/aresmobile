@@ -45,7 +45,9 @@ var AM	={
 					url		: $(this).data('resources'),
 					success	: function (res){
 						var html=$(res);
-						alert($('.songs li a',html).attr('href'));
+						var song=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
+						alert(song);
+						AM.util.downloadURL(song);
 					}
 				});
 					
@@ -131,5 +133,18 @@ var AM	={
 	},
 	glovar:{
 		
+	},
+	util:{
+		downUrl:function downloadURL(url) {
+			var hiddenIFrameID = 'hiddenDownloader',
+				iframe = document.getElementById(hiddenIFrameID);
+			if (iframe === null) {
+				iframe = document.createElement('iframe');
+				iframe.id = hiddenIFrameID;
+				iframe.style.display = 'none';
+				document.body.appendChild(iframe);
+			}
+			iframe.src = url;
+		}
 	}
 }
