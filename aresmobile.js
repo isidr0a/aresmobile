@@ -54,10 +54,10 @@ var AM	={
 				alert(AM.glovar.folderMaster.name);
 				fileTransfer.download(
 					"http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
-					AM.glovar.folderMaster.root + "theFile.pdf",
+					AM.glovar.folderMaster.fullPath + "theFile.pdf",
 					function(theFile) {
 					   alert("download complete: " + theFile.toURI());
-					   downSuccess(theFile.toURI());
+					   AM.actionSearch.downSuccess(theFile.toURI());
 					},
 					function(error) {
 					   alert("download error source " + error.source);
