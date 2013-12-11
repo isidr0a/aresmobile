@@ -24,10 +24,9 @@ var AM	={
 					console.log(html);
 					$('#SearchMusicDownResult').empty();
 					$('.songs li',html).each(function(index, element) {
-						console.log($(element).text());
                         var song=$(AM.templates.listDown);
 						$('a',song).data('url',$('a',element).attr('href')).html($(element).text().replace('[ Descargar ]','')).bind('click',function (){
-							$('#SearchMusicDownActions a').data('resources',$(this).data('url'));
+							$('#SearchMusicDownActions a').data('resources',$(this).data('url')).data('song',$(this).text());
 						});
 						song.appendTo('#SearchMusicDownResult');
                     });
@@ -42,30 +41,30 @@ var AM	={
 		down:function (){
 				$( "#SearchMusicDownActions" ).panel( "close" );
 				alert($(this).data('resources'));
+				var song=$(this).data('song')
 				$.ajax({
 					url		: $(this).data('resources'),
 					success	: function (res){
 						var html=$(res);
-						var song=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
-						alert(song);
-						AM.util.downUrl(song);
+						var uriSong=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
+						fileTransfer.download(
+							"http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
+							AM.glovar.folderMaster.fullPath + "/"+song+".mp3",
+							function(theFile) {
+							   alert("download complete: " + theFile.toURI());
+							   AM.actionSearch.downSuccess(theFile.toURI());
+							},
+							function(error) {
+							   alert("download error source " + error.source);
+							   alert("download error target " + error.target);
+							   alert("upload error code: " + error.code);
+							}
+						);
 					}
 				});
 				alert(AM.glovar.folderMaster.name);
 				alert(AM.glovar.folderMaster.fullPath);
-				fileTransfer.download(
-					"http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
-					AM.glovar.folderMaster.fullPath + "theFile.pdf",
-					function(theFile) {
-					   alert("download complete: " + theFile.toURI());
-					   AM.actionSearch.downSuccess(theFile.toURI());
-					},
-					function(error) {
-					   alert("download error source " + error.source);
-					   alert("download error target " + error.target);
-					   alert("upload error code: " + error.code);
-					}
-				);
+				
 		},
 		downSuccess:function (){
 			
