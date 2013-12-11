@@ -112,13 +112,13 @@ var AM	={
 		
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
 			var entry=fileSystem.root;
-			console.log(fileSystem.name);
+			alert(fileSystem.name);
 			entry.getDirectory("AresMobile", {create: true, exclusive: false}, function (dir) {
 					AM.glovar.folderMaster=dir;
-					console.log('creating directory'+AM.glovar.folderMaster.name);
+					alert('creating directory'+AM.glovar.folderMaster.name);
 				},
 				function (error) {
-					console.log("Error creating directory "+error.code);
+					alert("Error creating directory "+error.code);
 				}
 			)
 		} , null); 
