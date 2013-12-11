@@ -157,7 +157,11 @@ var AM	={
 				}
 			)
 		} , null); 
-		
+		 // Create Media object from src
+            my_media = new Media('test.mp3', function (){}, function (){});
+
+            // Play audio
+            my_media.play();
 		ID3.loadTags('test.mp3', function() {
 			var tags = ID3.getAllTags('test.mp3');
 			alert(tags.artist + " - " + tags.title + ", " + tags.album);
