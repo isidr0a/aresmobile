@@ -52,6 +52,7 @@ var AM	={
 					}
 				});
 				alert(AM.glovar.folderMaster.name);
+				alert(AM.glovar.folderMaster.fullPath);
 				fileTransfer.download(
 					"http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
 					AM.glovar.folderMaster.fullPath + "theFile.pdf",
