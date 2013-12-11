@@ -40,7 +40,6 @@ var AM	={
 		},
 		down:function (){
 				$( "#SearchMusicDownActions" ).panel( "close" );
-				alert($(this).data('resources'));
 				var song=$(this).data('song')
 				$.ajax({
 					url		: $(this).data('resources'),
@@ -49,11 +48,18 @@ var AM	={
 						var uriSong=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
 						var fileTransfer = new FileTransfer();
 						fileTransfer.download(
-							"http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
+							uriSong,
 							AM.glovar.folderMaster.fullPath + "/"+song+".mp3",
 							function(theFile) {
-							   alert("download complete: " + theFile.toURI());
-							   AM.actionSearch.downSuccess(theFile.toURI());
+							   	alert("download complete: " + theFile.toURI());
+							   	alert("download complete: " + theFile.toURL());
+							   	alert("download complete: " + theFile.fullPath);
+							   	AM.actionSearch.downSuccess(theFile.toURI());
+								/*
+							   	ID3.loadTags("filename.mp3", function() {
+									var tags = ID3.getAllTags("filename.mp3");
+									alert(tags.artist + " - " + tags.title + ", " + tags.album);
+								});*/
 							},
 							function(error) {
 							   alert("download error source " + error.source);
