@@ -51,18 +51,18 @@ var AM	={
 						AM.util.downUrl(song);
 					}
 				});
-				alert(AM.glovar.folderMaster.root);
+				alert(AM.glovar.folderMaster.name);
 				fileTransfer.download(
 					"http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
-					AM.glovar.folderMaster.root + "/theFile.pdf",
+					AM.glovar.folderMaster.root + "theFile.pdf",
 					function(theFile) {
 					   alert("download complete: " + theFile.toURI());
 					   downSuccess(theFile.toURI());
 					},
 					function(error) {
-					   console.log("download error source " + error.source);
-					   console.log("download error target " + error.target);
-					   console.log("upload error code: " + error.code);
+					   alert("download error source " + error.source);
+					   alert("download error target " + error.target);
+					   alert("upload error code: " + error.code);
 					}
 				);
 		},
@@ -112,13 +112,10 @@ var AM	={
 		
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
 			var entry=fileSystem.root;
-			alert(fileSystem.name);
 			entry.getDirectory("AresMobile", {create: true, exclusive: false}, function (dir) {
 					AM.glovar.folderMaster=dir;
-					alert('creating directory'+AM.glovar.folderMaster.name);
 				},
 				function (error) {
-					alert("Error creating directory "+error.code);
 				}
 			)
 		} , null); 
