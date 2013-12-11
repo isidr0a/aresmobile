@@ -47,7 +47,7 @@ var AM	={
 						var html=$(res);
 						var song=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
 						alert(song);
-						AM.util.downloadURL(song);
+						AM.util.downUrl(song);
 					}
 				});
 					
@@ -56,7 +56,7 @@ var AM	={
                                  function gotFileEntry(fileEntry){
                                  var sPath = fileEntry.fullPath.replace("dummy.html","");
                                  var fileTransfer = new FileTransfer();
-                                 fileEntry.remove();
+                                // fileEntry.remove();
  
                                  fileTransfer.download(
                                            "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
@@ -135,7 +135,7 @@ var AM	={
 		
 	},
 	util:{
-		downUrl:function downloadURL(url) {
+		downUrl:function (url) {
 			var hiddenIFrameID = 'hiddenDownloader',
 				iframe = document.getElementById(hiddenIFrameID);
 			if (iframe === null) {
