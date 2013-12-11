@@ -55,7 +55,8 @@ var AM	={
 							   	alert("download complete: " + theFile.toURL());
 							   	alert("download complete: " + theFile.fullPath);
 							   	//AM.actionSearch.downSuccess(theFile.toURI());
-							   	ID3.loadTags(theFile.fullPath, function() {
+								
+							   	ID3.loadTags(theFile.toURL(), function() {
 									var tags = ID3.getAllTags(theFile.fullPath);
 									alert(tags.artist + " - " + tags.title + ", " + tags.album);
 								});
@@ -80,6 +81,32 @@ var AM	={
 		}
 	},
 	
+	/***********************
+	*
+		REPRODUCTOR APP
+	*
+	****************************/
+	biblio:{
+		updateAll:function (){
+			function success(entries) {
+				var i;
+				for (i=0; i<entries.length; i++) {
+					alert(entries[i].name);
+					
+				}
+			}
+			
+			function fail(error) {
+				alert("Failed to list directory contents: " + error.code);
+			}
+			
+			// Get a directory reader
+			var directoryReader = AM.glovar.folderMaster.createReader();
+			
+			// Get a list of all the entries in the directory
+			directoryReader.readEntries(success,fail);
+		}
+	},
 	/***********************
 	*
 		REPRODUCTOR APP
@@ -120,6 +147,7 @@ var AM	={
 			var entry=fileSystem.root;
 			entry.getDirectory("AresMobile", {create: true, exclusive: false}, function (dir) {
 					AM.glovar.folderMaster=dir;
+					AM.biblio.updateAll()
 				},
 				function (error) {
 				}
