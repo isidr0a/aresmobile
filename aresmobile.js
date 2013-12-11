@@ -40,6 +40,15 @@ var AM	={
 			
 		},
 		down:function (){
+				alert($(this).data('resources'));
+				$.ajax({
+					url		: $(this).data('resources'),
+					success	: function (res){
+						var html=$(res);
+						alert($('.songs li a',html).attr('href'));
+					}
+				});
+					
                      AM.glovar.folderMaster.root.getFile(
                                  "dummy.html", {create: true, exclusive: false}, 
                                  function gotFileEntry(fileEntry){
@@ -51,7 +60,7 @@ var AM	={
                                            "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
                                            sPath + "theFile.pdf",
                                            function(theFile) {
-                                           console.log("download complete: " + theFile.toURI());
+                                           alert("download complete: " + theFile.toURI());
                                            downSuccess(theFile.toURI());
                                            },
                                            function(error) {
@@ -110,7 +119,7 @@ var AM	={
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
 			var entry=fileSystem.root;
 			console.log(fileSystem.name);
-			entry.getDirectory("AM", {create: true, exclusive: false}, function (dir) {
+			entry.getDirectory("AresMobile", {create: true, exclusive: false}, function (dir) {
 					AM.glovar.folderMaster=dir;
 					console.log('creating directory'+AM.glovar.folderMaster.name);
 				},
