@@ -39,9 +39,8 @@
         <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
             <ul>
                 <li><a href="#pageSearch" class="ui-btn-active ui-state-persist btn-menuSearch" data-icon="custom">Búsqueda</a></li>
-                <li><a href="#" id="biblio" data-icon="custom">Biblioteca</a></li>
-                <li><a href="#" id="repro" data-icon="custom">Reproductor</a></li>
-                <li><a href="#pageDown" id="download" class="btn-manuDownload" data-icon="custom">Descargas</a></li>
+                <li><a href="#pageBiblio" data-icon="custom">Biblioteca</a></li>
+                <li><a href="#pageDown" class="btn-manuDownload" data-icon="custom">Descargas</a></li>
             </ul>
         </div>
     </div>
@@ -58,27 +57,41 @@
         <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
             <ul>
                 <li><a href="#" class="ui-btn-active ui-state-persist btn-menuSearch" data-icon="custom">Búsqueda</a></li>
-                <li><a href="#" id="biblio" data-icon="custom">Biblioteca</a></li>
-                <li><a href="#" id="repro" data-icon="custom">Reproductor</a></li>
+                <li><a href="#" data-icon="custom">Biblioteca</a></li>
                 <li><a href="#pageDown" id="download" class="btn-manuDownload" data-icon="custom">Descargas</a></li>
             </ul>
         </div>
     </div>
 </div>
 
-<div data-role="page" id="page3">
+<div data-role="page" id="pageBiblio">
 	<div data-role="header">
 		<h1>Página tres</h1>
 	</div>
 	<div data-role="content">	
-		Contenido		
+		<ul data-role="listview" data-split-icon="gear" data-split-theme="d" data-inset="true">
+            <li><a href="#">
+                <img src="images/coverDefault.png">
+                <h2>Broken Bells</h2>
+                <p>Broken Bells</p></a>
+            </li>
+            <li><a href="#">
+                <img src="images/coverDefault.png">
+                <h2>Warning</h2>
+                <p>Hot Chip</p></a>
+            </li>
+            <li><a href="#">
+                <img src="images/coverDefault.png">
+                <h2>Wolfgang Amadeus Phoenix</h2>
+                <p>Phoenix</p></a>
+            </li>
+        </ul>
 	</div>
     <div data-role="footer" class="nav-glyphish-example" data-position="fixed">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
             <ul>
                 <li><a href="#pageSearch" class="ui-btn-active ui-state-persist btn-menuSearch" data-icon="custom">Búsqueda</a></li>
-                <li><a href="#" id="biblio" data-icon="custom">Biblioteca</a></li>
-                <li><a href="#" id="repro" data-icon="custom">Reproductor</a></li>
+                <li><a href="#" data-icon="custom">Biblioteca</a></li>
                 <li><a href="#pageDown" id="download" class="btn-manuDownload" data-icon="custom">Descargas</a></li>
             </ul>
         </div>
@@ -118,9 +131,8 @@
         <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
             <ul>
                 <li><a href="#pageSearch" class="btn-menuSearch" data-icon="custom">Búsqueda</a></li>
-                <li><a href="#" id="biblio" data-icon="custom">Biblioteca</a></li>
-                <li><a href="#" id="repro" data-icon="custom">Reproductor</a></li>
-                <li><a href="#" id="download" class="ui-btn-active ui-state-persist btn-manuDownload" data-icon="custom">Descargas</a></li>
+                <li><a href="#pageBiblio" data-icon="custom">Biblioteca</a></li>
+                <li><a href="#" class="ui-btn-active ui-state-persist btn-manuDownload" data-icon="custom">Descargas</a></li>
             </ul>
         </div>
     </div>

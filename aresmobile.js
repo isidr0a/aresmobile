@@ -9,19 +9,19 @@ var AM	={
 	searchMusic:function (e){
 			e.preventDefault();
 			e.stopPropagation();
+			$("#SearchMusicDownInput").blur();
+			alert($.trim($("#SearchMusicDownInput").val()).replace(' ','+'))
 			$.ajax({
 				url:"http://m.mp3xd.com/search.php",
 				type:'GET',
 				data:{
-					q:$("#SearchMusicDownInput").val().replace(' ','+')
+					q:$.trim($("#SearchMusicDownInput").val()).replace(' ','+')
 				},
 				error: function(res){
 				
 				},
 				success: function(res){
 					var html=$(res);
-					console.log(res);
-					console.log(html);
 					$('#SearchMusicDownResult').empty();
 					$('.songs li',html).each(function(index, element) {
                         var song=$(AM.templates.listDown);
@@ -36,6 +36,24 @@ var AM	={
 	},
 	actionSearch:{
 		play:function (){
+			$( "#SearchMusicDownActions" ).panel( "close" );
+			var song=$(this).data('song')
+			$.ajax({
+				url		: $(this).data('resources'),
+				success	: function (res){
+					var html=$(res);
+					var uriSong=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
+					if(AM.repro.current){
+						AM.repro.current.pause();
+						AM.repro.current=null;
+					}
+					AM.repro.current=new Media(uriSong,
+						function () { console.log("playAudio():Audio Success"); },
+						function (err) { console.log("playAudio():Audio Error: " + err); }
+					)
+					AM.repro.current.play();
+					}
+				});
 			
 		},
 		down:function (){
@@ -55,11 +73,6 @@ var AM	={
 							   	alert("download complete: " + theFile.toURL());
 							   	alert("download complete: " + theFile.fullPath);
 							   	//AM.actionSearch.downSuccess(theFile.toURI());
-								
-							   	ID3.loadTags(theFile.toURL(), function() {
-									var tags = ID3.getAllTags(theFile.fullPath);
-									alert(tags.artist + " - " + tags.title + ", " + tags.album);
-								});
 							},
 							function(error) {
 							   alert("download error source " + error.source);
@@ -93,10 +106,8 @@ var AM	={
 				var aux=[];
 				$.each(entries,function (i,e){
 					alert(e.name);
-					/*ID3.loadTags(e.toURL(), function() {
-						var tags = ID3.getAllTags(e.toURL());
-						alert(tags.artist + " - " + tags.title + ", " + tags.album);
-					});*/
+					var pista=$(AM.templates.pista);
+					$('h2',pista).html(e.name);
 				});
 			}
 			
@@ -104,10 +115,8 @@ var AM	={
 				alert("Failed to list directory contents: " + error.code);
 			}
 			
-			// Get a directory reader
 			var directoryReader = AM.glovar.folderMaster.createReader();
 			
-			// Get a list of all the entries in the directory
 			directoryReader.readEntries(success,fail);
 		}
 	},
@@ -137,7 +146,8 @@ var AM	={
 	*
 	*************************/
 	templates:{
-		listDown:'<li><a href="#SearchMusicDownActions"></a></li>'
+		listDown:'<li><a href="#SearchMusicDownActions"></a></li>',
+		pista:'<li><a href="#"> <img src="images/coverDefault.png"><h2></h2></a> </li>'
 	},
 	/***********************
 	*
@@ -157,22 +167,6 @@ var AM	={
 				}
 			)
 		} , null); 
-		 // Create Media object from src
-            my_media = new Media('test.mp3', 
-				function() {
-					alert("playAudio():Audio Success");
-				},
-					function(err) {
-						alert(err);
-				}
-				);
-
-            // Play audio
-            my_media.play();
-		ID3.loadTags('test.mp3', function() {
-			var tags = ID3.getAllTags('test.mp3');
-			alert(tags.artist + " - " + tags.title + ", " + tags.album);
-		});
 	},
 	glovar:{
 		
@@ -189,5 +183,8 @@ var AM	={
 			}
 			iframe.src = url;
 		}
+	},
+	repro:{
+		current:null
 	}
 }
