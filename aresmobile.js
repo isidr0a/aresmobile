@@ -57,7 +57,7 @@ var AM	={
 						AM.repro.current.pause();
 						AM.repro.current=null;
 					}
-					AM.repro.current=new Media('http://api.soundcloud.com/tracks/70762897/stream?client_id=f2eedb62f7002008c29bf30778009e24',
+					AM.repro.current=new Media(uriSong,
 						function () { console.log("playAudio():Audio Success"); },
 						function (err) { console.log("playAudio():Audio Error: " + err); }
 					)
@@ -73,7 +73,7 @@ var AM	={
 					url		: $(this).data('resources'),
 					success	: function (res){
 						var html=$(res);
-						var uriSong='http://api.soundcloud.com/tracks/70762897/stream?client_id=f2eedb62f7002008c29bf30778009e24';//$('.songs li a',html).attr('href');
+						var uriSong=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
 						var fileTransfer = new FileTransfer();
 						var idDown='DownId'+Math.floor((Math.random() * 100) + 1);
 						var view=$(AM.templates.pista);
