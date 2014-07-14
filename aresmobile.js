@@ -74,10 +74,9 @@ var AM	={
 					success	: function (res){
 						var html=$(res);
 						var uriSong=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
+						alert(uriSong);
 						var fileTransfer = new FileTransfer();
 						var idDown='DownId'+Math.floor((Math.random() * 100) + 1);
-						var view=$(AM.templates.pista);
-						$('h2',view).html(song);
 						fileTransfer.onprogress = function(progressEvent) {
 							if (progressEvent.lengthComputable) {
 								$('#logs').add(perc + "% loaded...");
@@ -95,7 +94,7 @@ var AM	={
 							}
 						};
 						view.appendTo('#pageDown [data-role=listview]');
-						$('#pageDown [data-role=listview]').listview( "refresh" );
+						$('#pageDown [data-role=content] [data-role=listview]').listview( "refresh" );
 						fileTransfer.download(
 							uriSong,
 							AM.glovar.folderMaster.fullPath + "/"+song+".mp3",
@@ -111,6 +110,8 @@ var AM	={
 							   alert("upload error code: " + error.code);
 							}
 						);
+						var view=$(AM.templates.pista);
+						$('h2',view).html(song);
 					}
 				});
 				alert(AM.glovar.folderMaster.name);
@@ -142,7 +143,7 @@ var AM	={
 					$('h2',pista).html(e.name);
 					pista.appendTo('#pageBiblio [data-role=listview]');
 				});
-				$('#pageBiblio [data-role=listview]').listview( "refresh" );
+				$('#pageBiblio [data-role=content] [data-role=listview]').listview( "refresh" );
 			}
 			
 			function fail(error) {
