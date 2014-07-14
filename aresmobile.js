@@ -7,6 +7,7 @@ var AM	={
 	*
 	****************************/
 	searchMusic:function (e){
+		alert('hola mundo');
 			e.preventDefault();
 			e.stopPropagation();
 			$.mobile.loading( "show");
@@ -162,6 +163,7 @@ var AM	={
 	install:function (){
 		alert('init install');
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
+			alert('init install');
 			var entry=fileSystem.root;
 			entry.getDirectory("AresMobile", {create: true, exclusive: false}, function (dir) {
 					AM.glovar.folderMaster=dir;
