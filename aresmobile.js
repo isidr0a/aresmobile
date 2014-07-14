@@ -80,14 +80,17 @@ var AM	={
 						$('h2',view).html(song);
 						fileTransfer.onprogress = function(progressEvent) {
 							if (progressEvent.lengthComputable) {
+								$('#logs').add(perc + "% loaded...");
 								var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
 								$('p',view).html(perc + "% loaded...");
 							} else {
 								if(statusDom.innerHTML == "") {
 									$('p',view).html("Loading");
+									$('#logs').add(perc + "% loaded...");
 									statusDom.innerHTML = "Loading";
 								} else {
 									$('p',view).html(".");
+									$('#logs').add(perc + "% loaded...");
 								}
 							}
 						};
