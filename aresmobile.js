@@ -16,12 +16,11 @@ var AM	={
 				url:"http://m.mp3xd.com/search.php",
 				type:'GET',
 				data:{
-					q:$("#SearchMusicDownInput").val().replace(' ','+')
+					q:$.trim($("#SearchMusicDownInput").val()).replace(' ','+')
 				},
 				error: function(res){
 					alert('error');
 					$.mobile.loading( "hide");
-					$('#logErrors').html(res);
 				},
 				success: function(res){
 					alert('busqueda terminada');
@@ -147,7 +146,6 @@ var AM	={
 	****************************/
 	initApp:function (){
 		AM.install();
-		
 		//inizializando buscador
 		$('#SearchMusicDown').bind('submit',AM.searchMusic);
 		$('a[data-action=down]').bind('click',AM.actionSearch.down);
@@ -170,9 +168,7 @@ var AM	={
 	*************************/
 	install:function (){
 		alert('init install');
-		alert(LocalFileSystem.PERSISTENT);
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
-			alert('init install');
 			var entry=fileSystem.root;
 			entry.getDirectory("AresMobile", {create: true, exclusive: false}, function (dir) {
 					AM.glovar.folderMaster=dir;
