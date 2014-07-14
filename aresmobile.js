@@ -73,25 +73,29 @@ var AM	={
 					url		: $(this).data('resources'),
 					success	: function (res){
 						var html=$(res);
-						var uriSong=encodeURI($('.songs li a',html).attr('href').replace(/http:.*\?/,''));
+						var uriSong=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
 						alert(uriSong);
 						var fileTransfer = new FileTransfer();
 						if(!fileTransfer){
 							alert('error inicializar dirver de descarga');
 						}
 						var idDown='DownId'+Math.floor((Math.random() * 100) + 1);
+						var view=$(AM.templates.pista);
+						$('h2',view).html(song).attr('id',idDown);
+						view.appendTo('#listDown');
+						$('#listDown').listview( "refresh" );
 						fileTransfer.onprogress = function(progressEvent) {
 							if (progressEvent.lengthComputable) {
 								$('#logs').add(perc + "% loaded...");
 								var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
-								$('p',view).html(perc + "% loaded...");
+								$('#'+idDown).html(perc + "% loaded...");
 							} else {
 								if(statusDom.innerHTML == "") {
-									$('p',view).html("Loading");
+									$('#'+idDown).html("Loading");
 									$('#logs').add(perc + "% loaded...");
 									statusDom.innerHTML = "Loading";
 								} else {
-									$('p',view).html(".");
+									$('#'+idDown).html(".");
 									$('#logs').add(perc + "% loaded...");
 								}
 							}
@@ -105,16 +109,11 @@ var AM	={
 							   	alert("download complete: " + theFile.fullPath);
 							},
 							function(error) {
-								$('p',view).html('Error');
 							   alert("download error source " + error.source);
 							   alert("download error target " + error.target);
 							   alert("upload error code: " + error.code);
 							}
 						);
-						var view=$(AM.templates.pista);
-						$('h2',view).html(song);
-						view.appendTo('#listDown');
-						$('#listDown').listview( "refresh" );
 					}
 				});
 				alert(AM.glovar.folderMaster.name);
