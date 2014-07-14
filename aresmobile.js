@@ -162,6 +162,7 @@ var AM	={
 	*************************/
 	install:function (){
 		alert('init install');
+		alert(LocalFileSystem.PERSISTENT);
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
 			alert('init install');
 			var entry=fileSystem.root;
