@@ -19,7 +19,9 @@ var AM	={
 					q:$.trim($("#SearchMusicDownInput").val()).replace(' ','+')
 				},
 				error: function(res){
-					$.mobile.loading( "show");
+					alert('busqueda terminada');
+					$.mobile.loading( "hide");
+					$('#logErrors').html(res);
 				},
 				success: function(res){
 					alert('busqueda terminada');
