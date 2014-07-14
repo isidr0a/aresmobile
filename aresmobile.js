@@ -73,7 +73,7 @@ var AM	={
 					url		: $(this).data('resources'),
 					success	: function (res){
 						var html=$(res);
-						var uriSong=$('.songs li a',html).attr('href');
+						var uriSong='http://www.sonidosmp3gratis.com/sounds/alarma_5.mp3';//$('.songs li a',html).attr('href');
 						var fileTransfer = new FileTransfer();
 						var idDown='DownId'+Math.floor((Math.random() * 100) + 1);
 						var view=$(AM.templates.pista);
