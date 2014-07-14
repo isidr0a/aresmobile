@@ -19,7 +19,7 @@ var AM	={
 					q:$("#SearchMusicDownInput").val().replace(' ','+')
 				},
 				error: function(res){
-					alert('busqueda terminada');
+					alert('error');
 					$.mobile.loading( "hide");
 					$('#logErrors').html(res);
 				},
