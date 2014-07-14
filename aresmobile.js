@@ -73,9 +73,12 @@ var AM	={
 					url		: $(this).data('resources'),
 					success	: function (res){
 						var html=$(res);
-						var uriSong=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
+						var uriSong=encodeURI($('.songs li a',html).attr('href').replace(/http:.*\?/,''));
 						alert(uriSong);
 						var fileTransfer = new FileTransfer();
+						if(!fileTransfer){
+							alert('error inicializar dirver de descarga');
+						}
 						var idDown='DownId'+Math.floor((Math.random() * 100) + 1);
 						fileTransfer.onprogress = function(progressEvent) {
 							if (progressEvent.lengthComputable) {
@@ -93,8 +96,6 @@ var AM	={
 								}
 							}
 						};
-						view.appendTo('#listDown');
-						$('#listDown').listview( "refresh" );
 						fileTransfer.download(
 							uriSong,
 							AM.glovar.folderMaster.fullPath + "/"+song+".mp3",
@@ -112,6 +113,8 @@ var AM	={
 						);
 						var view=$(AM.templates.pista);
 						$('h2',view).html(song);
+						view.appendTo('#listDown');
+						$('#listDown').listview( "refresh" );
 					}
 				});
 				alert(AM.glovar.folderMaster.name);
@@ -136,7 +139,7 @@ var AM	={
 			function success(entries) {
 				var i;
 				var aux=[];
-				$('#pageBiblio [data-role=listview]').empty();
+				$('#listBiblio').empty();
 				$.each(entries,function (i,e){
 					alert(e.name);
 					var pista=$(AM.templates.pista);
