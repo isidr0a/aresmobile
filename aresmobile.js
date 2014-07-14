@@ -7,7 +7,6 @@ var AM	={
 	*
 	****************************/
 	searchMusic:function (e){
-		alert('hola mundo');
 			e.preventDefault();
 			e.stopPropagation();
 			$.mobile.loading( "show");
@@ -23,16 +22,23 @@ var AM	={
 					$.mobile.loading( "show");
 				},
 				success: function(res){
+					alert('busqueda terminada');
 					var html=$(res);
-					$.mobile.loading( "show");
+					$.mobile.loading( "hide");
 					$('#SearchMusicDownResult').empty();
-					$('.songs li',html).each(function(index, element) {
-                        var song=$(AM.templates.listDown);
-						$('a',song).data('url',$('a',element).attr('href')).html($(element).text().replace('[ Descargar ]','')).bind('click',function (){
-							$('#SearchMusicDownActions a').data('resources',$(this).data('url')).data('song',$(this).text());
+					var canciones=$('.songs li',html);
+					if(canciones.length>0){
+						$('.songs li',html).each(function(index, element) {
+							var song=$(AM.templates.listDown);
+							$('a',song).data('url',$('a',element).attr('href')).html($(element).text().replace('[ Descargar ]','')).bind('click',function (){
+								$('#SearchMusicDownActions a').data('resources',$(this).data('url')).data('song',$(this).text());
+							});
+							song.appendTo('#SearchMusicDownResult');
 						});
-						song.appendTo('#SearchMusicDownResult');
-                    });
+					}
+					else{
+						alert('Disculpe, no hay resultados');
+					}
 					$('#SearchMusicDownResult').listview('refresh');
 				}
 			});
