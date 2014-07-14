@@ -16,16 +16,20 @@
 
 <div data-role="page"id="pageSearch" data-theme="a" >
     <div data-role="panel" id="SearchMusicDownActions" data-position="right" data-display="reveal">
-        <a href="#" data-role="button" data-action="play">Reproducir</a>
-        <a href="#" data-theme="b" data-role="button" data-action="down">Descargar</a>
+        <ul data-role="listview">
+       		<li><a href="#" data-action="play">Reproducir</a></li>
+        	<li><a href="#" data-theme="b" data-action="down">Descargar</a></li>
+        </ul>
     </div><!-- /panel -->
-    <div data-role="panel" id="menuSearch" data-position="left" data-display="reveal">
-    	<a href="#pageSearch" data-transition="slide">Búsqueda</a>
-        <a href="#pageBiblio" data-transition="slide">Biblioteca</a>
-        <a href="#pageDown" data-transition="slide">Descargas</a>
+    <div data-role="panel" id="menuSearch" data-position-fixed="true" data-position="left" data-display="reveal">
+        <ul data-role="listview">
+    		<li><a href="#pageSearch" data-transition="slide">Búsqueda</a></li>
+            <li><a href="#pageBiblio" data-transition="slide">Biblioteca</a></li>
+            <li><a href="#pageDown" data-transition="slide">Descargas</a></li>
+         </ul>
     </div>
 	<div data-role="header">
-    	<a href="#menuSearch" data-icon="grid" class="ui-btn-left"></a>
+    	<a href="#menuSearch" data-iconpos="notext" data-icon="grid" class="ui-btn-left"></a>
 		<h1>Búsqueda</h1>
 	</div>
 	<div data-role="content">
@@ -78,7 +82,7 @@
         <a href="#pageDown" data-transition="slide">Descargas</a>
     </div>
 	<div data-role="header">
-    	<a href="#menuBiblio" data-icon="grid" class="ui-btn-left"></a>
+    	<a href="#menuBiblio" data-iconpos="notext"  data-icon="grid" class="ui-btn-left"></a>
 		<h1>Biblioteca</h1>
 	</div>
 	<div data-role="content">	
@@ -105,7 +109,7 @@
         <a href="#pageDown" data-transition="slide">Descargas</a>
     </div>
 	<div data-role="header">
-    	<a href="#menuDown" data-icon="grid" class="ui-btn-left"></a>
+    	<a href="#menuDown" data-iconpos="notext" data-icon="grid" class="ui-btn-left"></a>
 		<h1>Descargas</h1>
 	</div>
 	<div data-role="content">	
