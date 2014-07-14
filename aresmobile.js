@@ -193,9 +193,12 @@ var AM	={
 			var entry=fileSystem.root;
 			entry.getDirectory("AresMobile", {create: true, exclusive: false}, function (dir) {
 					AM.glovar.folderMaster=dir;
+					alert('succes install');
+					alert(AM.glovar.folderMaster.fullPath);
 					AM.biblio.updateAll()
 				},
 				function (error) {
+					alert('error install');
 				}
 			)
 		} , null); 
