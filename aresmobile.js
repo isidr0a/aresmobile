@@ -93,8 +93,8 @@ var AM	={
 								}
 							}
 						};
-						view.appendTo('#pageDown [data-role=listview]');
-						$('#pageDown [data-role=content] [data-role=listview]').listview( "refresh" );
+						view.appendTo('#listDown');
+						$('#listDown').listview( "refresh" );
 						fileTransfer.download(
 							uriSong,
 							AM.glovar.folderMaster.fullPath + "/"+song+".mp3",
@@ -141,9 +141,9 @@ var AM	={
 					alert(e.name);
 					var pista=$(AM.templates.pista);
 					$('h2',pista).html(e.name);
-					pista.appendTo('#pageBiblio [data-role=listview]');
+					pista.appendTo('#listBiblio');
 				});
-				$('#pageBiblio [data-role=content] [data-role=listview]').listview( "refresh" );
+				$('#listBiblio').listview( "refresh" );
 			}
 			
 			function fail(error) {
