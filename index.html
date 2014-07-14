@@ -23,7 +23,7 @@
     </div><!-- /panel -->
     <div data-role="panel" id="menuSearch" data-position-fixed="true" data-position="left" data-display="push">
         <ul data-role="listview">
-    		<li><a href="#menuSearch" data-rel="close">Búsqueda</a></li>
+    		<li><a href="#" data-rel="close">Búsqueda</a></li>
             <li><a href="#pageBiblio" data-transition="slide">Biblioteca</a></li>
             <li><a href="#pageDown" data-transition="slide">Descargas</a></li>
          </ul>
@@ -77,9 +77,11 @@
 
 <div data-role="page" id="pageBiblio">
     <div data-role="panel" id="menuBiblio" data-position="left" data-display="push">
-    	<a href="#pageSearch" data-transition="slide">Búsqueda</a>
-        <a href="#menuBiblio" data-rel="close" >Biblioteca</a>
-        <a href="#pageDown" data-transition="slide">Descargas</a>
+        <ul data-role="listview">
+            <li><a href="#pageSearch" data-transition="slide">Búsqueda</a></li>
+            <li><a href="#" data-rel="close" >Biblioteca</a></li>
+            <li><a href="#pageDown" data-transition="slide">Descargas</a></li>
+        </ul>
     </div>
 	<div data-role="header">
     	<a href="#menuBiblio" data-iconpos="notext"  data-icon="grid" class="ui-btn-left"></a>
@@ -104,9 +106,11 @@
 
 <div data-role="page" id="pageDown"  data-theme="a" >
     <div data-role="panel" id="menuDown" data-position="left" data-display="push">
-    	<a href="#pageSearch" data-transition="slide">Búsqueda</a>
-        <a href="#pageBiblio" data-transition="slide">Biblioteca</a>
-        <a href="#menuDown" data-rel="close">Descargas</a>
+        <ul data-role="listview">
+    		<li><a href="#pageSearch" data-transition="slide">Búsqueda</a></li>
+        	<li><a href="#pageBiblio" data-transition="slide">Biblioteca</a></li>
+        	<li><a href="#" data-rel="close">Descargas</a></li>
+        </ul>
     </div>
 	<div data-role="header">
     	<a href="#menuDown" data-iconpos="notext" data-icon="grid" class="ui-btn-left"></a>
