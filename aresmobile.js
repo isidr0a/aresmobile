@@ -106,11 +106,14 @@ var AM	={
 			function success(entries) {
 				var i;
 				var aux=[];
+				$('#pageBiblio [data-role=listview]').empty();
 				$.each(entries,function (i,e){
 					alert(e.name);
 					var pista=$(AM.templates.pista);
 					$('h2',pista).html(e.name);
+					pista.appendTo('#pageBiblio [data-role=listview]');
 				});
+				$('#pageBiblio [data-role=listview]').listview( "refresh" );
 			}
 			
 			function fail(error) {
@@ -157,8 +160,7 @@ var AM	={
 	*
 	*************************/
 	install:function (){
-		console.log('init install');
-		
+		alert('init install');
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
 			var entry=fileSystem.root;
 			entry.getDirectory("AresMobile", {create: true, exclusive: false}, function (dir) {
@@ -172,19 +174,6 @@ var AM	={
 	},
 	glovar:{
 		
-	},
-	util:{
-		downUrl:function (url) {
-			var hiddenIFrameID = 'hiddenDownloader',
-				iframe = document.getElementById(hiddenIFrameID);
-			if (iframe === null) {
-				iframe = document.createElement('iframe');
-				iframe.id = hiddenIFrameID;
-				iframe.style.display = 'none';
-				document.body.appendChild(iframe);
-			}
-			iframe.src = url;
-		}
 	},
 	repro:{
 		current:null
