@@ -21,9 +21,9 @@
         	<li><a href="#" data-theme="b" data-action="down">Descargar</a></li>
         </ul>
     </div><!-- /panel -->
-    <div data-role="panel" id="menuSearch" data-position-fixed="true" data-position="left" data-display="reveal">
+    <div data-role="panel" id="menuSearch" data-position-fixed="true" data-position="left" data-display="push">
         <ul data-role="listview">
-    		<li><a href="#pageSearch" data-transition="slide">Búsqueda</a></li>
+    		<li><a href="#menuSearch" data-rel="close" class="ui-btn-active" data-transition="slide" >Búsqueda</a></li>
             <li><a href="#pageBiblio" data-transition="slide">Biblioteca</a></li>
             <li><a href="#pageDown" data-transition="slide">Descargas</a></li>
          </ul>
@@ -67,18 +67,18 @@
     <div data-role="footer" class="nav-glyphish-example" data-position="fixed">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="b">
             <ul>
-                <li><a href="#" data-transition="slide"  class="ui-btn-active ui-state-persist btn-menuSearch" data-icon="custom">Búsqueda</a></li>
-                <li><a href="#" data-transition="slide"  data-icon="custom">Biblioteca</a></li>
-                <li><a href="#pageDown" data-transition="slide"  id="download" class="btn-manuDownload" data-icon="custom">Descargas</a></li>
+                <li><a href="#pageSearch" data-icon="carat-l"></a></li>
+                <li><a href="#pageBiblio" data-icon="audio"></a></li>
+                <li><a href="#pageDown" data-icon="carat-r"></a></li>
             </ul>
         </div>
     </div>
 </div>
 
 <div data-role="page" id="pageBiblio">
-    <div data-role="panel" id="menuBiblio" data-position="left" data-display="reveal">
+    <div data-role="panel" id="menuBiblio" data-position="left" data-display="push">
     	<a href="#pageSearch" data-transition="slide">Búsqueda</a>
-        <a href="#pageBiblio" data-transition="slide">Biblioteca</a>
+        <a href="#menuBiblio" data-rel="close"  class="ui-btn-active" data-transition="slide">Biblioteca</a>
         <a href="#pageDown" data-transition="slide">Descargas</a>
     </div>
 	<div data-role="header">
@@ -94,19 +94,19 @@
     <div data-role="footer" class="nav-glyphish-example" data-position="fixed">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="b">
             <ul>
-                <li><a href="#pageSearch" data-transition="slide" data-icon="custom">Búsqueda</a></li>
-                <li><a href="#" data-transition="slide"  class="ui-btn-active ui-state-persist btn-menuSearch"  data-icon="custom">Biblioteca</a></li>
-                <li><a href="#pageDown" data-transition="slide" id="download" class="btn-manuDownload" data-icon="custom">Descargas</a></li>
+                <li><a href="#pageSearch" data-icon="carat-l"></a></li>
+                <li><a href="#pageBiblio" data-icon="audio"></a></li>
+                <li><a href="#pageDown" data-icon="carat-r"></a></li>
             </ul>
         </div>
     </div>
 </div>
 
 <div data-role="page" id="pageDown"  data-theme="a" >
-    <div data-role="panel" id="menuDown" data-position="left" data-display="reveal">
+    <div data-role="panel" id="menuDown" data-position="left" data-display="push">
     	<a href="#pageSearch" data-transition="slide">Búsqueda</a>
         <a href="#pageBiblio" data-transition="slide">Biblioteca</a>
-        <a href="#pageDown" data-transition="slide">Descargas</a>
+        <a href="#menuDown" data-rel="close" class="ui-btn-active" data-transition="slide">Descargas</a>
     </div>
 	<div data-role="header">
     	<a href="#menuDown" data-iconpos="notext" data-icon="grid" class="ui-btn-left"></a>
@@ -125,9 +125,9 @@
     <div data-role="footer" class="nav-glyphish-example" data-position="fixed">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="b">
             <ul>
-                <li><a href="#pageSearch"  data-transition="slide" class="btn-menuSearch" data-icon="custom">Búsqueda</a></li>
-                <li><a href="#pageBiblio" data-transition="slide"  data-icon="custom">Biblioteca</a></li>
-                <li><a href="#" data-transition="slide"  class="ui-btn-active ui-state-persist btn-manuDownload" data-icon="custom">Descargas</a></li>
+                <li><a href="#pageSearch" data-icon="carat-l"></a></li>
+                <li><a href="#pageBiblio" data-icon="audio"></a></li>
+                <li><a href="#pageDown" data-icon="carat-r"></a></li>
             </ul>
         </div>
     </div>
