@@ -15,8 +15,9 @@ var AM	={
 			$.ajax({
 				url:"http://m.mp3xd.com/search.php",
 				type:'GET',
+				crossDomain:true,
 				data:{
-					q:$.trim($("#SearchMusicDownInput").val()).replace(' ','+')
+					q:$("#SearchMusicDownInput").val().replace(' ','+')
 				},
 				error: function(res){
 					alert('busqueda terminada');
