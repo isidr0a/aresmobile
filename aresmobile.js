@@ -105,6 +105,7 @@ var AM	={
 							   	alert("download complete: " + theFile.fullPath);
 							},
 							function(error) {
+								$('p',view).html('Error');
 							   alert("download error source " + error.source);
 							   alert("download error target " + error.target);
 							   alert("upload error code: " + error.code);
