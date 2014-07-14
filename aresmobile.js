@@ -9,8 +9,9 @@ var AM	={
 	searchMusic:function (e){
 			e.preventDefault();
 			e.stopPropagation();
+			$.mobile.loading( "show");
+			alert($.trim($("#SearchMusicDownInput").val()).replace(' ','+'));
 			$("#SearchMusicDownInput").blur();
-			alert($.trim($("#SearchMusicDownInput").val()).replace(' ','+'))
 			$.ajax({
 				url:"http://m.mp3xd.com/search.php",
 				type:'GET',
@@ -18,10 +19,11 @@ var AM	={
 					q:$.trim($("#SearchMusicDownInput").val()).replace(' ','+')
 				},
 				error: function(res){
-				
+					$.mobile.loading( "show");
 				},
 				success: function(res){
 					var html=$(res);
+					$.mobile.loading( "show");
 					$('#SearchMusicDownResult').empty();
 					$('.songs li',html).each(function(index, element) {
                         var song=$(AM.templates.listDown);
