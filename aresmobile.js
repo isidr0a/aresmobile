@@ -91,6 +91,8 @@ var AM	={
 								}
 							}
 						};
+						view.appendTo('#pageDown [data-role=listview]');
+						$('#pageDown [data-role=listview]').listview( "refresh" );
 						fileTransfer.download(
 							uriSong,
 							AM.glovar.folderMaster.fullPath + "/"+song+".mp3",
