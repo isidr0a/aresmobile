@@ -73,7 +73,7 @@ var AM	={
 					url		: $(this).data('resources'),
 					success	: function (res){
 						var html=$(res);
-						var uriSong=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
+						var uriSong=$('.songs li a',html).attr('href');
 						var fileTransfer = new FileTransfer();
 						var idDown='DownId'+Math.floor((Math.random() * 100) + 1);
 						var view=$(AM.templates.pista);
@@ -103,7 +103,6 @@ var AM	={
 							   	alert("download complete: " + theFile.toURI());
 							   	alert("download complete: " + theFile.toURL());
 							   	alert("download complete: " + theFile.fullPath);
-							   	//AM.actionSearch.downSuccess(theFile.toURI());
 							},
 							function(error) {
 							   alert("download error source " + error.source);
@@ -193,8 +192,6 @@ var AM	={
 			var entry=fileSystem.root;
 			entry.getDirectory("AresMobile", {create: true, exclusive: false}, function (dir) {
 					AM.glovar.folderMaster=dir;
-					alert('succes install');
-					alert(AM.glovar.folderMaster.fullPath);
 					AM.biblio.updateAll()
 				},
 				function (error) {
