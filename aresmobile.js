@@ -89,11 +89,12 @@ var AM	={
 								$('#logs').add(perc + "% loaded...");
 								var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
 								$('#'+idDown).html(perc + "% loaded...");
+								$('#logs').add(perc + "% loaded...");
 							} else {
-								if(statusDom.innerHTML == "") {
+								if($('#'+idDown).innerHTML == "") {
 									$('#'+idDown).html("Loading");
 									$('#logs').add(perc + "% loaded...");
-									statusDom.innerHTML = "Loading";
+									$('#'+idDown).innerHTML = "Loading";
 								} else {
 									$('#'+idDown).html(".");
 									$('#logs').add(perc + "% loaded...");
