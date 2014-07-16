@@ -15,7 +15,7 @@
 <body onLoad="onBodyLoad"> 
 
 <div data-role="page"id="pageSearch" data-theme="a" >
-    <div data-role="panel" id="SearchMusicDownActions" data-position="right" data-display="reveal">
+    <div data-role="panel" id="SearchMusicDownActions" data-position="right" data-display="push">
         <ul data-role="listview">
        		<li><a href="#" data-action="play">Reproducir</a></li>
         	<li><a href="#" data-theme="b" data-action="down">Descargar</a></li>
@@ -39,7 +39,7 @@
                     <input type="search" placeholder="Buscar..." name="search" id="SearchMusicDownInput" value="" />
                 </form>
             </div>
-            <div>
+            <div style="margin-top:20px;">
                 <ul data-role="listview" id="SearchMusicDownResult" data-position-fixed="true">
                 
                 </ul>

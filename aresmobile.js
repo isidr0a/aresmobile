@@ -10,7 +10,7 @@ var AM	={
 			e.preventDefault();
 			e.stopPropagation();
 			$.mobile.loading( "show");
-			alert($.trim($("#SearchMusicDownInput").val()).replace(' ','+'));
+			alert($.trim($("#SearchMusicDownInput").val()).replace(/ /g,'+'));
 			$("#SearchMusicDownInput").blur();
 			$.ajax({
 				url:"http://m.mp3xd.com/search.php",
