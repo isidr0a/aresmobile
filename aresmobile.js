@@ -79,6 +79,7 @@ var AM	={
 						}
 						var idDown='DownId'+Math.floor((Math.random() * 1000) + 1);
 						var view=$(AM.templates.pista);
+						$('h2',view).html(song)
 						$(view).html(song).attr('id',idDown);
 						view.appendTo('#listDown');
 						$('#listDown').listview( "refresh" );
