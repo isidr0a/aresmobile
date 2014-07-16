@@ -79,22 +79,19 @@ var AM	={
 						}
 						var idDown='DownId'+Math.floor((Math.random() * 1000) + 1);
 						var view=$(AM.templates.pista);
-						$('h2',view).html(song).attr('id',idDown);
+						$(view).html(song).attr('id',idDown);
 						view.appendTo('#listDown');
 						$('#listDown').listview( "refresh" );
 						fileTransfer.onprogress = function(progressEvent) {
 							if (progressEvent.lengthComputable) {
-								var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
-								$('#'+idDown).html(perc + "% loaded...");
-								$('#logs').add(perc + "% loaded...");
+								var perc = (Math.floor(progressEvent.loaded / progressEvent.total * 100)/2);
+								$('#'+idDown+' p').html(perc + "% loaded...");
 							} else {
-								if($('#'+idDown).html() == "") {
-									$('#'+idDown).html("Loading");
-									$('#logs').add(perc + "% loaded...");
-									$('#'+idDown).html("Loading");
+								if($('#'+idDown+' p').html() == "") {
+									$('#'+idDown+' p').html("Loading");
+									$('#'+idDown+' p').html("Loading");
 								} else {
-									$('#'+idDown).html(".");
-									$('#logs').add(perc + "% loaded...");
+									$('#'+idDown+' p').html(".");
 								}
 							}
 						};
@@ -102,9 +99,9 @@ var AM	={
 							uriSong,
 							AM.glovar.folderMaster.fullPath + "/"+song+".mp3",
 							function(theFile) {
-							   	alert("download complete: " + theFile.toURI());
-							   	alert("download complete: " + theFile.toURL());
-							   	alert("download complete: " + theFile.fullPath);
+						        navigator.notification.beep(3);
+						        navigator.notification.vibrate(2000);
+								AM.biblio.updateAll();
 							},
 							function(error) {
 							   alert("download error source " + error.source);
@@ -114,10 +111,7 @@ var AM	={
 						);
 						$.mobile.changePage("#pageDown")
 					}
-				});
-				alert(AM.glovar.folderMaster.name);
-				alert(AM.glovar.folderMaster.fullPath);
-				
+				});				
 		},
 		downSuccess:function (){
 			
