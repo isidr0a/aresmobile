@@ -85,16 +85,18 @@ var AM	={
 						view.appendTo('#listDown');
 						$('#listDown').listview( "refresh" );
 						fileTransfer.onprogress = function(progressEvent) {
+							alert(idDown);
+							
 							if (progressEvent.lengthComputable) {
-								$('#logs').add(perc + "% loaded...");
 								var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+								$('#logs').add(perc + "% loaded...");
 								$('#'+idDown).html(perc + "% loaded...");
 								$('#logs').add(perc + "% loaded...");
 							} else {
-								if($('#'+idDown).innerHTML == "") {
+								if($('#'+idDown).html() == "") {
 									$('#'+idDown).html("Loading");
 									$('#logs').add(perc + "% loaded...");
-									$('#'+idDown).innerHTML = "Loading";
+									$('#'+idDown).html("Loading");
 								} else {
 									$('#'+idDown).html(".");
 									$('#logs').add(perc + "% loaded...");
