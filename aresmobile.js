@@ -10,7 +10,6 @@ var AM	={
 			e.preventDefault();
 			e.stopPropagation();
 			$.mobile.loading( "show");
-			alert($.trim($("#SearchMusicDownInput").val()).replace(/ /g,'+'));
 			$("#SearchMusicDownInput").blur();
 			$.ajax({
 				url:"http://m.mp3xd.com/search.php",
@@ -74,22 +73,18 @@ var AM	={
 					success	: function (res){
 						var html=$(res);
 						var uriSong=$('.songs li a',html).attr('href').replace(/http:.*\?/,'');
-						alert(uriSong);
 						var fileTransfer = new FileTransfer();
 						if(!fileTransfer){
 							alert('error inicializar dirver de descarga');
 						}
-						var idDown='DownId'+Math.floor((Math.random() * 100) + 1);
+						var idDown='DownId'+Math.floor((Math.random() * 1000) + 1);
 						var view=$(AM.templates.pista);
 						$('h2',view).html(song).attr('id',idDown);
 						view.appendTo('#listDown');
 						$('#listDown').listview( "refresh" );
 						fileTransfer.onprogress = function(progressEvent) {
-							alert(idDown);
-							
 							if (progressEvent.lengthComputable) {
 								var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
-								$('#logs').add(perc + "% loaded...");
 								$('#'+idDown).html(perc + "% loaded...");
 								$('#logs').add(perc + "% loaded...");
 							} else {
@@ -117,6 +112,7 @@ var AM	={
 							   alert("upload error code: " + error.code);
 							}
 						);
+						$.mobile.changePage("#pageDown")
 					}
 				});
 				alert(AM.glovar.folderMaster.name);
@@ -194,7 +190,6 @@ var AM	={
 	*
 	*************************/
 	install:function (){
-		alert('init install');
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) { 
 			var entry=fileSystem.root;
 			entry.getDirectory("AresMobile", {create: true, exclusive: false}, function (dir) {
